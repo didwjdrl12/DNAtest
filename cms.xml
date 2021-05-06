@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<mavlink>
+  <version>1</version>
+  
+  <enums>
+    <enum name="DNA_DEVICE_TYPE">
+      <description>Device Type</description>
+      <entry value="0" name="DRONE"/>
+      <entry value="1" name="FIXED_GCS"/>
+      <entry value="2" name="MOVING_GCS"/>
+      <entry value="3" name="BM_MONITORING"/>  
+    </enum>
+
+    <enum name="CONNECTION_REQUEST_VALIDATE_RESULT">
+      <description>Connection request validate result</description>
+      <entry value="0" name="OK"/>
+      <entry value="1" name="DRONE_NOT_FOUND"/>
+      <entry value="2" name="ALREADY_ACTIVATE"/>
+      <entry value="3" name="RS_NOT_FOUND"/>  
+      <entry value="4" name="MS_NOT_FOUND"/>  
+      <entry value="5" name="RS_AND_MS_NOT_FOUND"/>  
+    </enum>
+  </enums>
+
+  <messages>
+    <message id="50000" name="CONNECTION_INFO_REQUEST">
+      <description>Connection Info Request to CMS Server</description>
+      <field type="uint8_t" name="drone_id">Drone ID (0 to 200)</field>
+      <field type="uint8_t" name="device_type" enum="DNA_DEVICE_TYPE">Source device type(0: Drone, 1 : Fixed GCS, 2 : Moving GCS, 3: BM Mornitoring)</field>
+    </message>
+    
+    <message id="50001" name="CONNECTION_INFO_RESPONSE">
+      <description>Connection Info Response to Devices</description>
+      <field type="uint8_t" name="drone_id">Drone ID (0 to 200)</field>
+      <field type="uint8_t" name="validate_result" enum="CONNECTION_REQUEST_VALIDATE_RESULT">Validate result for connecting</field>
+      <field type="uint32_t" name="relayserver_ip">Relay Server IP</field>
+      <field type="uint16_t" name="relayserver_port">Relay Server Port</field>
+      <field type="uint32_t" name="mediaserver_ip">Media Server IP</field>
+      <field type="uint16_t" name="mediaserver_port">Media Server Port</field>
+    </message>
+
+  </messages>      
+</mavlink>
+
