@@ -16,14 +16,16 @@ RECEIVE_PORT = 10001
 CMS_RECEIVE_PORT = 14550
 
 # CMS(연결관리서버) 연결 정보
-CMS_IP = "112.216.129.92" # Soletop CMS
+#CMS_IP = "112.216.221.96" # Soletop CMS
+CMS_IP = "129.254.221.96" # ETRI
+# CMS_IP = "192.168.0.17" 
 CMS_PORT = 25000
 CMS_addr = (CMS_IP, CMS_PORT)
 
 # mav 인스턴스 설정
 mav = mavlink2.MAVLink("")
 # Drone SysID 설정
-mav.srcSystem = 1 # It should be the same with the drone's MAVLINK SYS ID
+mav.srcSystem = 13 # It should be the same with the drone's MAVLINK SYS ID
 
 
 ################################################# 설정 불필요 #############################################
